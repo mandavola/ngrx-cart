@@ -1,27 +1,98 @@
-# Ngrx
+# Application de Panier d'Achats avec Angular et NgRx
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.3.
+Cette application démontre l'implémentation d'un panier d'achats en utilisant Angular et NgRx pour la gestion d'état. Elle présente une architecture moderne basée sur les composants autonomes (standalone) et intègre les dernières fonctionnalités d'Angular.
 
-## Development server
+## Fonctionnalités
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+L'application offre les fonctionnalités suivantes :
+- Affichage d'une liste de produits disponibles
+- Ajout de produits au panier
+- Gestion des quantités dans le panier
+- Calcul automatique du total
+- Sauvegarde automatique du panier (simulation)
 
-## Code scaffolding
+## Prérequis Techniques
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Node.js (version 18 ou supérieure)
+- Angular CLI (version 18.2.12)
+- NPM ou Yarn
 
-## Build
+## Installation
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Clonez le dépôt :
+```bash
+git clone https://github.com/mandavola/ngrx-cart.git
+cd ngrx-cart
+```
 
-## Running unit tests
+2. Installez les dépendances :
+```bash
+npm install
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+3. Installez les dépendances NgRx :
+```bash
+npm install @ngrx/store@18.0.0 @ngrx/effects@18.0.0 @ngrx/store-devtools@18.0.0
+```
 
-## Running end-to-end tests
+## Structure du Projet
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```
+src/
+├── app/
+│   ├── cart/
+│   │   ├── cart.component.html
+│   │   ├── cart.component.scss
+│   │   ├── cart.component.spec.ts
+│   │   └── cart.component.ts
+│   ├── models/
+│   │   └── product.model.ts
+│   ├── product-list/
+│   │   ├── product-list.component.html
+│   │   ├── product-list.component.scss
+│   │   ├── product-list.component.spec.ts
+│   │   └── product-list.component.ts
+│   ├── services/
+│   │   └── cart.service.ts
+│   ├── store/
+│   │   ├── cart.actions.ts
+│   │   ├── cart.effects.ts
+│   │   ├── cart.reducer.ts
+│   │   ├── cart.selectors.ts
+│   │   └── store.config.ts
+│   ├── app.component.html
+│   ├── app.component.scss
+│   ├── app.component.spec.ts
+│   ├── app.component.ts
+│   ├── app.config.ts
+│   └── app.routes.ts
+```
 
-## Further help
+## Architecture
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Composants Standalone
+L'application utilise l'architecture standalone d'Angular, éliminant le besoin de modules NgModule traditionnels. Chaque composant est autonome et déclare ses propres dépendances.
+
+### Gestion d'État avec NgRx
+- **Actions** : Définissent les interactions possibles avec le panier
+- **Reducer** : Gère les modifications d'état en réponse aux actions
+- **Effects** : Gèrent les effets secondaires comme la sauvegarde du panier
+- **Selectors** : Permettent d'accéder à l'état de manière optimisée
+
+## Routes
+
+L'application définit deux routes principales :
+- `/products` : Affiche la liste des produits disponibles
+- `/cart` : Affiche le contenu du panier
+
+## Développement
+
+Pour lancer l'application en mode développement :
+```bash
+ng serve
+```
+L'application sera accessible à l'adresse `http://localhost:4200`.
+
+## Licence
+
+Ce projet est sous licence MIT. Voir le fichier LICENSE pour plus de détails.
